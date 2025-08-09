@@ -42,7 +42,7 @@ function update() {
   const west = `#0x${lat.toString(16)}/0x${wrap(long - 1).toString(16)}`;
 
   root.innerHTML = `
-    <pre>${showme(lat, long)}</pre>
+    ${showme(lat, long)}
     <ul>
       <li><a href="${north}">north</a></li>
       <li><a href="${east}">east</a></li>

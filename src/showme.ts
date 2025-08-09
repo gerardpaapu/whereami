@@ -13,15 +13,13 @@ export function showme(lat: number, long: number): string {
   const skyColor = oneOf(rand, ['pink', 'blue', 'purple']);
   const skyThings = oneOf(rand, ['fish', 'birds', 'silence']);
   const mood = oneOf(rand, ['peaceful', 'tense', 'foreboding', 'nice']);
-  const smell = oneOf(rand, ['cinammon', 'peppermint', 'burning flesh']);
 
-  return `whereami? 
-you find yourself in a strange land.
+  return `<h1>whereami?</h1>
+<p>you find yourself in a strange land.</p>
+<p>
 the ${skyColor} sky is full of ${skyThings}.
 you feel ${mood}.
-
-there's a faint smell of ${smell}
-
+</p>
 ${describeBiome(lat, long, rand)}
 `;
 }

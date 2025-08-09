@@ -12,8 +12,7 @@ export default function showBiome(random: Rand) {
   ]);
 
   return `
-Yeehaw, we're out on the open range.
-
-You see some ${trackAge} tracks that look like ${tracks}...
+<p>Yeehaw, we're out on the open range.</p>
+<p>You see some ${trackAge} tracks that look like ${tracks}&hellip;</p>
 `;
 }

@@ -1,0 +1,33 @@
+@import url('./css/reset.css');
+
+/* set these variables differently for each biome */
+:root {
+  --text-bg-color: #ddd;
+  --text-fg-color: #222;
+  --page-bg-color: #444;
+}
+
+html {
+  background-color: var(--page-bg-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Book Antiqua,Palatino,Palatino Linotype,Palatino LT STD,Georgia,serif; 
+}
+
+body {
+  padding: 0.5em 0 0;
+  margin: 0;
+}
+
+.content {
+  border: solid 0.2em var(--text-fg-color);
+  border-radius: 1em 1.4em 3em;
+  width: 23em;
+  padding: 1em 2em;
+  line-height: 1.5;
+  word-spacing: 0.1em;
+  margin: 0 auto;
+  color: var(--text-fg-color);
+  background: var(--text-bg-color);
+}
