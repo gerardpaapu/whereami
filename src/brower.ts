@@ -4,17 +4,17 @@ function parse() {
   if (!window.location.hash || window.location.hash.indexOf('/') === -1) {
     const lat = Math.floor(Math.random() * 0xffff);
     const long = Math.floor(Math.random() * 0xffff);
-    const _lat = `x${lat.toString(16)}`;
-    const _lng = `x${long.toString(16)}`;
+    const _lat = `0x${lat.toString(16)}`;
+    const _lng = `0x${long.toString(16)}`;
     window.location.hash = `${_lat}/${_lng}`;
     return false;
   }
 
   const [a, b] = window.location.hash.slice(1).split('/');
-  const lat = parseInt(a?.replace(/^x/, ''), 16) & 0xffff;
-  const long = parseInt(b?.replace(/^x/, ''), 16) & 0xffff;
-  const _lat = `x${lat.toString(16)}`;
-  const _lng = `x${long.toString(16)}`;
+  const lat = parseInt(a?.replace(/^0x/, ''), 16) & 0xffff;
+  const long = parseInt(b?.replace(/^0x/, ''), 16) & 0xffff;
+  const _lat = `0x${lat.toString(16)}`;
+  const _lng = `0x${long.toString(16)}`;
 
   if (a !== _lat || b !== _lng) {
     window.location.hash = `${_lat}/${_lng}`;
@@ -36,10 +36,10 @@ function update() {
     return;
   }
 
-  const north = `/whereami/#x${wrap(lat + 1).toString(16)}/x${long.toString(16)}`;
-  const east = `/whereami/#x${lat.toString(16)}/x${wrap(long + 1).toString(16)}`;
-  const south = `/whereami/#x${wrap(lat - 1).toString(16)}/x${long.toString(16)}`;
-  const west = `/whereami/#x${lat.toString(16)}/x${wrap(long - 1).toString(16)}`;
+  const north = `#0x${wrap(lat + 1).toString(16)}/0x${long.toString(16)}`;
+  const east = `#0x${lat.toString(16)}/0x${wrap(long + 1).toString(16)}`;
+  const south = `#0x${wrap(lat - 1).toString(16)}/0x${long.toString(16)}`;
+  const west = `#0x${lat.toString(16)}/0x${wrap(long - 1).toString(16)}`;
 
   root.innerHTML = `
     <pre>${showme(lat, long)}</pre>
