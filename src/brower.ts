@@ -36,10 +36,10 @@ function update() {
     return;
   }
 
-  const north = `/#x${wrap(lat + 1).toString(16)}/x${long.toString(16)}`;
-  const east = `/#x${lat.toString(16)}/x${wrap(long + 1).toString(16)}`;
-  const south = `/#x${wrap(lat - 1).toString(16)}/x${long.toString(16)}`;
-  const west = `/#x${lat.toString(16)}/x${wrap(long - 1).toString(16)}`;
+  const north = `/whereami/#x${wrap(lat + 1).toString(16)}/x${long.toString(16)}`;
+  const east = `/whereami/#x${lat.toString(16)}/x${wrap(long + 1).toString(16)}`;
+  const south = `/whereami/#x${wrap(lat - 1).toString(16)}/x${long.toString(16)}`;
+  const west = `/whereami/#x${lat.toString(16)}/x${wrap(long - 1).toString(16)}`;
 
   root.innerHTML = `
     <pre>${showme(lat, long)}</pre>
