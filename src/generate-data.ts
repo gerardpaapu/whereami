@@ -1,5 +1,6 @@
 import * as fs from 'node:fs/promises';
 
+const NUMBER_OF_SITES = 13;
 const names = [
   'blessed',
   'cursed',
@@ -10,6 +11,10 @@ const names = [
   'rainbow',
   'poisoned',
   'burning',
+  'upside-down',
+  'candy',
+  'squishy',
+  'thalassan',
 ];
 
 function fisherYatesShuffle<T>(array: T[]): void {
@@ -26,26 +31,25 @@ function fisherYatesShuffle<T>(array: T[]): void {
     array[randomIndex] = temporaryValue;
   }
 }
-
-for (const name of names) {
-  const permutation = [];
-  const circles = [];
-  const threshhold = Math.random();
-  while (permutation.length < 256) {
-    permutation[permutation.length] = permutation.length;
-  }
-
-  fisherYatesShuffle(permutation);
-  while (Math.random() < 0.7) {
-    circles.push({
-      x: Math.random() * 64,
-      y: Math.random() * 64,
-      radius: Math.random() * 64,
-    });
-  }
-  await fs.writeFile(
-    `./src/data/${name}.json`,
-    JSON.stringify({ permutation, threshhold, circles }, null, 2),
-    'utf8'
-  );
+const sites = [];
+while (sites.length < NUMBER_OF_SITES) {
+  sites.push({
+    x: Math.random() * 256,
+    y: Math.random() * 256,
+    strength: Math.random(),
+    name: names[sites.length],
+  });
 }
+
+const permutation = [];
+while (permutation.length < 256) {
+  permutation[permutation.length] = permutation.length;
+}
+
+fisherYatesShuffle(permutation);
+
+await fs.writeFile(
+  `./src/data.json`,
+  JSON.stringify({ permutation, sites }, null, 2),
+  'utf8'
+);
